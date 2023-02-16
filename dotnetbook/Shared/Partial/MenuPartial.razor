@@ -1,0 +1,33 @@
+@inherits LayoutComponentBase
+
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Разделы
+        </a>
+        <ul class="dropdown-menu" @onclick="OnClickCallback">
+            <li>
+                <NavLink href="core" class="dropdown-item">
+                    Руководство .NET
+                </NavLink>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item" @onclick="OnClickCallback">
+        <NavLink class="nav-link" href="about" ActiveClass="text-white">
+            О приложении
+        </NavLink>
+    </li>
+</ul>
+
+<div class="d-flex" @onclick="OnClickCallback">
+    <NavLink class="btn btn-info me-1" href="share" ActiveClass="disabled">
+        <i class="fas fa-share-alt"></i>
+        Поделиться
+    </NavLink>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnClickCallback { get; set; }
+}

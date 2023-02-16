@@ -1,0 +1,31 @@
+@inherits LayoutComponentBase
+
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-dark bg-success border-bottom mb-2">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dotnetbook/" @onclick="ToggleNavMenu">
+                <img src="favicon.png" alt="Бренд" width="30" height="30" class="d-inline-block align-text-top">
+            </a>
+            <a class="navbar-brand" href="/dotnetbook/" @onclick="ToggleNavMenu">
+                .NET книга
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="@NavMenuCssClass collapse navbar-collapse" id="navbarSupportedContent">
+                <MenuPartial OnClickCallback="@ToggleNavMenu" />
+            </div>
+        </div>
+    </nav>
+</header>
+
+@code {
+    private bool collapse;
+    private string? NavMenuCssClass => collapse ? "collapse" : null;
+    private void ToggleNavMenu()
+    {
+        collapse = !collapse;
+    }
+}
