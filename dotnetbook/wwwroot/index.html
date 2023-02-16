@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru-ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#198754">
+
+    <link href="css/errors.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/font-awesome/all.min.css" rel="stylesheet" />
+    <!-- <link href="nikkefir.styles.css" rel="stylesheet" /> -->
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="500x500">
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+
+    <base href="/" />
+
+    <component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="loading-title">
+            <h4>.NET книга</h4>
+        </div>
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        Обнаружена ошибка. Приложение требует перезагрузки.
+        <a href="" class="btn btn-success reload">
+            Перезагрузить
+        </a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/font-awesome/all.min.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
