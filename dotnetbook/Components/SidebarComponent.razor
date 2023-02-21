@@ -1,0 +1,81 @@
+@inject BookService BookService
+
+<div class="row flex-nowrap">
+    <div class="col-auto px-0 bg-light">
+
+        <div id="basic" class="collapse collapse-horizontal border-end">
+
+            <h4 class="text-center text-white bg-success p-2">Информация</h4>
+            <div class="accordion accordion-flush" id="accordionInfo">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item m-1">
+                        <NavLink Match="NavLinkMatch.All" href="core" class="nav-link text-dark"
+                            ActiveClass="text-white bg-success">
+                            @Name
+                        </NavLink>
+                    </li>
+
+                    @if (Parts is { })
+                    {
+                        foreach (var part in Parts)
+                        {
+                            var idPart = $"#part{part.Id}";
+                            var namePart = $"part{part.Id}";
+                            var nameShow = $"showPart{part.Id}";
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="@(nameShow)">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="@(idPart)" aria-expanded="false" aria-controls="@(namePart)">
+                                        @(part.Name)
+                                    </button>
+                                </h2>
+                                <div id="@(namePart)" class="accordion-collapse collapse" aria-labelledby="@(nameShow)"
+                                    data-bs-parent="#accordionInfo">
+                                    <div class="accordion-body p-1">
+                                        @foreach (var item in part.Items)
+                                        {
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <NavLink href="@($"core/{item.Id}")" class="nav-link fw-light text-dark" ActiveClass="text-white bg-success">
+                                                        @(item.Name)
+                                                    </NavLink>
+                                                </li>
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="col ps-md-2">
+        <a href="/" data-bs-target="#basic" data-bs-toggle="collapse" class="btn btn-light border text-dark mb-2"><i
+                class="fa fa-bars"></i>
+            Содержание</a>
+        <div class="row">
+            <div class="col-12">
+                @ChildContent
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public int BookId { get; set; } = 1;
+    private string? Name { get; set; }
+    private IEnumerable<Part>? Parts { get; set; }
+    protected override void OnParametersSet()
+    {
+        var book = BookService.GetBook(BookId);
+        Name = book?.Name;
+        Parts = book?.Parts ?? Array.Empty<Part>();
+    }
+}

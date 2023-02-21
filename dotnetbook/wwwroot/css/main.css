@@ -58,3 +58,19 @@ body {
 .loading-progress-text:after {
     content: var(--blazor-load-percentage-text, "Загрузка");
 }
+
+pre {
+    padding: 16px;
+    overflow: auto;
+    background-color: lightgray;
+    border-radius: 6px;
+}
+
+blockquote {
+    padding: 0 1em;
+    border-left: 0.25em solid silver;
+}
+
+blockquote p {
+    font-size: 80%;
+}

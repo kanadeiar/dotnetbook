@@ -1,0 +1,78 @@
+@page "/core/test"
+@layout CoreLayout
+@using Markdig
+
+<PageTitle>Тестирование - .NET книга</PageTitle>
+
+<div class="border-1 bg-light shadow rounded-1 p-2">
+
+    <h1>Тестирование</h1>
+    <hr />
+    <NavLink href="core" class="link-success">
+        Руководство .NET
+    </NavLink>
+    <hr />
+    <p>
+        @HtmlContent
+    </p>
+
+</div>
+
+@code {
+    private MarkupString? HtmlContent;
+    protected override void OnInitialized()
+    {
+        //var mark = new Markdown();
+        var text = @"# Введение в платформу .NET
+
+10 ноября 2020 года Микрософты выпустили C# 9 & .NET 5. Как и C# 8, C# 9 связан с версией фреймворка и платформы и будет
+работать на .NET 5 и выше. .NET 5 - продолжение .NET Core.
+
+.NET Core позволяет разрабатывать веб приложения и сервисы на Windows, iOS & Linux, мобильные приложения на Android &
+iOS, а также настольные приложения только на Windows.
+
+Сообщить компилятору о том, что он должен сделать проверку на совместимость с CLS в проекте:
+
+Определены следующие определения классов:
+
+```
+internal class Employee
+{
+    public Int32 GetYearsEmployed() {}
+    public virtual String GetProgressReport() {}
+    public static Employee Lookup(String name) {}
+}
+internal sealed class Manager : Employee
+{
+    public override String GetProgressReport() {}
+}
+```
+
+Состав фреймворка:
+
+- Утилита dotnet.exe для запуска .NET Core приложения - драйвер инфраструктуры .NET Core, точка входа для запуска любых
+приложений и выполнения команд разработки. Является хост-процессом любого приложения - corehost.
+
+- Runtime-компоненты устанавливаются в отдельную папку фреймворка C:\Program Files\dotnet\shared\[Framework
+name]\[Framework version].
+
+- Нативная библиотека host framework resolver в папке C:\Program Files\dotnet\host\[версия]\hostfxr.dll. Максимальная
+версия выполняет разрешение версии фреймворка для последующего выполнения.
+
+Для выполнения Portable-приложения необходимо запустить хост-процесс dotnet.exe и передать ему в качестве аргумента путь
+к управляемой сборке.
+
+> dotnet path/to/App.dll
+
+[Источник](https://habr.com/ru/company/nix/blog/327686/)
+
+## Процесс запуска .NET Framework
+
+![Стек потока 1](../img/thread_stack_1.png)
+
+";
+        HtmlContent = (MarkupString)Markdown.ToHtml(text);
+    }
+}
+
+

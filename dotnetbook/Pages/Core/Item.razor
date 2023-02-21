@@ -1,0 +1,51 @@
+@page "/core/{id:int}"
+@inject BookService BookService
+@layout CoreLayout
+
+<PageTitle>@ItemContent?.Name - .NET книга</PageTitle>
+
+<div class="border-1 bg-light shadow rounded-1 p-2">
+    <hr/>
+    <div>
+        <NavLink href="core" class="link-success">
+            Содержание
+        </NavLink>
+    </div>
+    <hr/>
+    @if (HtmlContent is null)
+    {
+        <div class="text-center">
+            <p class="my-5 py-5">
+                Загрузка ...
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>
+            @HtmlContent
+        </p>
+    }
+    <hr />
+    <div class="text-center">
+        <NavLink href="core" class="link-success">
+            Содержание
+        </NavLink>
+    </div>
+    <hr/>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    private Models.Item? ItemContent { get; set; }
+    private MarkupString? HtmlContent;
+    protected override void OnParametersSet()
+    {
+        ItemContent = BookService.GetItem(Id);
+        if (ItemContent?.Path is { } path)
+        {
+            HtmlContent = BookService.GetHtml(path);
+        } 
+    }
+}
