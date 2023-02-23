@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+      
+    - name: Setup .NET 7
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+        
+    - name: Publish .NET Project 🔧
+      run: dotnet publish dotnetbook/dotnetbook.csproj -c Release --output release
+      
+    - name: Change base-tag in index.html from / to dotnetbook
+      run: sed -i -e 's|<base href="\/" \/>|<base href="\/dotnetbook\/" \/>|g' release/wwwroot/index.html
+
+    - name: copy index.html to 404.html
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
+
+    - name: Deploy to GitHub Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: release/wwwroot
