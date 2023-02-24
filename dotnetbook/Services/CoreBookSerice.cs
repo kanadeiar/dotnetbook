@@ -1,13 +1,13 @@
 namespace dotnetbook.Services;
 
-public class BookService
+public class CoreBookService
 {
     private readonly HttpClient _httpClient;
     private readonly ICollection<Book> _books;
     private readonly ICollection<Item> _items;
     private readonly IDictionary<string, MarkupString> _htmls = new Dictionary<string, MarkupString>(); 
     public ICollection<Book> Books => _books;
-    public BookService(HttpClient httpClient)
+    public CoreBookService(HttpClient httpClient)
     {
         _httpClient = httpClient;
         _books = StartData.GetBooks();
@@ -17,7 +17,7 @@ public class BookService
             var pipeline = new Markdig.MarkdownPipelineBuilder().UseBootstrap().UseAdvancedExtensions().Build();
             foreach (var item in _items)
             {
-                var text = await _httpClient.GetStringAsync($"files/core/{item.Path}");
+                var text = await _httpClient.GetStringAsync($"/files/core/{item.Path}");
                 var html = (MarkupString)Markdown.ToHtml(text, pipeline);
                 _htmls.Add(item.Path!, html);
             }
@@ -33,9 +33,14 @@ public class BookService
         var item = _items.FirstOrDefault(x => x.Id == id);
         return item;
     }
-    public MarkupString GetHtml(string path)
+    public async Task<MarkupString?> GetHtml(string path)
     {
-        var html = _htmls[path];
-        return html;
+        if (_htmls.TryGetValue(path, out MarkupString html))
+        {
+            return html;
+        }
+        var pipeline = new Markdig.MarkdownPipelineBuilder().UseBootstrap().UseAdvancedExtensions().Build();
+        var text = await _httpClient.GetStringAsync($"/files/core/{path}");
+        return (MarkupString)Markdown.ToHtml(text, pipeline);
     }
 }

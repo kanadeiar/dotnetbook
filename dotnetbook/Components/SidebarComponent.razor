@@ -1,4 +1,4 @@
-@inject BookService BookService
+@inject CoreBookService CoreBookService
 
 <div class="row flex-nowrap">
     <div class="col-auto px-0 bg-light">
@@ -74,7 +74,7 @@
     private IEnumerable<Part>? Parts { get; set; }
     protected override void OnParametersSet()
     {
-        var book = BookService.GetBook(BookId);
+        var book = CoreBookService.GetBook(BookId);
         Name = book?.Name;
         Parts = book?.Parts ?? Array.Empty<Part>();
     }

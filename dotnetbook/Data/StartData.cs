@@ -44,7 +44,22 @@ public static class StartData
                             new Item{ Id = itemId++, Name = "Обобщения", Path = "generics.md" },
                             new Item{ Id = itemId++, Name = "Абстракции", Path = "abstractions.md" },
                         },
-                    }
+                    },
+                    new Part
+                    { 
+                        Id = partId++,
+                        Name = "Типы данных",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "Символы", Path = "symbols.md" },
+                            new Item{ Id = itemId++, Name = "Строки", Path = "strings.md" },
+                            new Item{ Id = itemId++, Name = "Перечислимые типы", Path = "enums.md" },
+                            new Item{ Id = itemId++, Name = "Массивы", Path = "arrays.md" },
+                            new Item{ Id = itemId++, Name = "Делегаты", Path = "delegates.md" },
+                            new Item{ Id = itemId++, Name = "Null-типы", Path = "nullable.md" },
+                            new Item{ Id = itemId++, Name = "Анонимные", Path = "anonymous.md" },
+                        },
+                    },
                 },
             }
         };

@@ -1,5 +1,5 @@
 @page "/core"
-@inject BookService BookService
+@inject CoreBookService CoreBookService
 @layout CoreLayout
 
 <PageTitle>@Name - .NET книга</PageTitle>
@@ -31,7 +31,7 @@
     private IEnumerable<Part>? Parts { get; set; }
     protected override void OnInitialized()
     {
-        var book = BookService.GetBook(bookId);
+        var book = CoreBookService.GetBook(bookId);
         Name = book?.Name;
         Parts = book?.Parts ?? Array.Empty<Part>();
     }

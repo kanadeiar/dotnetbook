@@ -1,5 +1,5 @@
 @page "/core/{id:int}"
-@inject BookService BookService
+@inject CoreBookService CoreBookService
 @layout CoreLayout
 
 <PageTitle>@ItemContent?.Name - .NET книга</PageTitle>
@@ -40,12 +40,12 @@
     public int Id { get; set; }
     private Models.Item? ItemContent { get; set; }
     private MarkupString? HtmlContent;
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
-        ItemContent = BookService.GetItem(Id);
+        ItemContent = CoreBookService.GetItem(Id);
         if (ItemContent?.Path is { } path)
         {
-            HtmlContent = BookService.GetHtml(path);
+            HtmlContent = await CoreBookService.GetHtml(path);
         } 
     }
 }

@@ -16,6 +16,7 @@
     <Using Include="Microsoft.AspNetCore.Components"/>
     <Using Include="Microsoft.AspNetCore.Components.Web"/>
     <Using Include="Microsoft.AspNetCore.Components.WebAssembly.Hosting"/>
+    <Using Include="System.Diagnostics"/>
   </ItemGroup>
 
 </Project>
