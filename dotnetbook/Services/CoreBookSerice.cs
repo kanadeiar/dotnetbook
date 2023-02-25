@@ -28,6 +28,11 @@ public class CoreBookService
         var book = _books.FirstOrDefault(x => x.Id == id);
         return book;
     }
+    public bool GetAnyItem(int id)
+    {
+        var found = _items.Any(x => x.Id == id);
+        return found;
+    }
     public Item? GetItem(int id)
     {
         var item = _items.FirstOrDefault(x => x.Id == id);

@@ -7,9 +7,21 @@
 <div class="border-1 bg-light shadow rounded-1 p-2">
     <hr/>
     <div>
-        <NavLink href="core" class="link-success">
+        @if (ItemContent?.Id > 1)
+        {
+            <NavLink href="@($"core/{ItemContent?.Id - 1}")" class="link-success me-2">
+                Назад
+            </NavLink>
+        }
+        <NavLink href="core" class="link-success me-2">
             Содержание
         </NavLink>
+        @if (AnyNextItem)
+        {
+            <NavLink href="@($"core/{ItemContent?.Id + 1}")" class="link-success me-2">
+                Далее
+            </NavLink>
+        }
     </div>
     <hr/>
     @if (HtmlContent is null)
@@ -18,6 +30,7 @@
             <p class="my-5 py-5">
                 Загрузка ...
             </p>
+            <br/>
         </div>
     }
     else
@@ -28,9 +41,21 @@
     }
     <hr />
     <div class="text-center">
-        <NavLink href="core" class="link-success">
+        @if (ItemContent?.Id > 1)
+        {
+            <NavLink href="@($"core/{ItemContent?.Id - 1}")" class="link-success me-2">
+                Назад
+            </NavLink>
+        }
+        <NavLink href="core" class="link-success me-2">
             Содержание
         </NavLink>
+        @if (AnyNextItem)
+        {
+            <NavLink href="@($"core/{ItemContent?.Id + 1}")" class="link-success me-2">
+                Далее
+            </NavLink>
+        }
     </div>
     <hr/>
 </div>
@@ -39,10 +64,12 @@
     [Parameter]
     public int Id { get; set; }
     private Models.Item? ItemContent { get; set; }
+    private bool AnyNextItem { get; set; }
     private MarkupString? HtmlContent;
     protected override async Task OnParametersSetAsync()
     {
         ItemContent = CoreBookService.GetItem(Id);
+        AnyNextItem = CoreBookService.GetAnyItem(Id + 1);
         if (ItemContent?.Path is { } path)
         {
             HtmlContent = await CoreBookService.GetHtml(path);

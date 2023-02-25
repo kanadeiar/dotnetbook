@@ -15,6 +15,16 @@ public static class StartData
                 Parts = new Part[]
                 { 
                     new Part
+                    {
+                        Id = partId++,
+                        Name = "Теория",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "ООП", Path = "theoryoop.md" },
+                            new Item{ Id = itemId++, Name = "SOLID", Path = "theorysolid.md" },
+                        }
+                    },
+                    new Part
                     { 
                         Id = partId++,
                         Name = "Основы",
@@ -24,6 +34,19 @@ public static class StartData
                             new Item{ Id = itemId++, Name = "Среда исполнения", Path = "runtime.md" },
                             new Item{ Id = itemId++, Name = "Консоль", Path = "console.md" },
                             new Item{ Id = itemId++, Name = "Команды", Path = "commands.md" },
+                        },
+                    },
+                    new Part
+                    { 
+                        Id = partId++,
+                        Name = "Механизмы",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "Механизмы CLR", Path = "clrdetails.md" },
+                            new Item{ Id = itemId++, Name = "Исключения", Path = "exceptions.md" },
+                            new Item{ Id = itemId++, Name = "Сборщик мусора", Path = "garbage.md" },
+                            new Item{ Id = itemId++, Name = "Пул потоков", Path = "threadpool.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронный автомат", Path = "mechasync.md" },
                         },
                     },
                     new Part
@@ -60,6 +83,33 @@ public static class StartData
                             new Item{ Id = itemId++, Name = "Анонимные", Path = "anonymous.md" },
                         },
                     },
+                    new Part
+                    { 
+                        Id = partId++,
+                        Name = "Код",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "Ветвления", Path = "ifs.md" },
+                            new Item{ Id = itemId++, Name = "Итерации", Path = "whiles.md" },
+                            new Item{ Id = itemId++, Name = "Стандартные интерфейсы", Path = "stdinterfaces.md" },
+                            new Item{ Id = itemId++, Name = "LINQ", Path = "linq.md" },
+                        },
+                    },
+                    new Part
+                    { 
+                        Id = partId++,
+                        Name = "Многопоточность",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "Потоки", Path = "threads.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронные вычисления", Path = "tasks.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронный код", Path = "asyncawait.md" },
+                            new Item{ Id = itemId++, Name = "Примитивная синхронизация", Path = "syncsimple.md" },
+                            new Item{ Id = itemId++, Name = "Гибридная синхронизация", Path = "synchybrid.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронная синхронизация", Path = "syncasync.md" },
+                        },
+                    },
+
                 },
             }
         };
