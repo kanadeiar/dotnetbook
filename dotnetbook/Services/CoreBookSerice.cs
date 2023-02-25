@@ -17,7 +17,7 @@ public class CoreBookService
             var pipeline = new Markdig.MarkdownPipelineBuilder().UseBootstrap().UseAdvancedExtensions().Build();
             foreach (var item in _items)
             {
-                var text = await _httpClient.GetStringAsync($"/files/core/{item.Path}");
+                var text = await _httpClient.GetStringAsync($"files/core/{item.Path}");
                 var html = (MarkupString)Markdown.ToHtml(text, pipeline);
                 _htmls.Add(item.Path!, html);
             }
@@ -45,7 +45,7 @@ public class CoreBookService
             return html;
         }
         var pipeline = new Markdig.MarkdownPipelineBuilder().UseBootstrap().UseAdvancedExtensions().Build();
-        var text = await _httpClient.GetStringAsync($"/files/core/{path}");
+        var text = await _httpClient.GetStringAsync($"files/core/{path}");
         return (MarkupString)Markdown.ToHtml(text, pipeline);
     }
 }
