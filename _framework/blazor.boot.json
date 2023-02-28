@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "dotnetbook.dll": "sha256-oT96NXox0b2p1MhB0j3xibuVmOyHmFEai4kzkkQZ+dg=",
+      "dotnetbook.dll": "sha256-peM2rlQUUBdQcEPf+Hiaob3jy18qYneotekadVHkkFo=",
       "Markdig.dll": "sha256-Yw+GRvxgz3z1q0RtGw3n9XUh1wzzAOQJ7uMJJAJs770=",
       "Microsoft.AspNetCore.Components.dll": "sha256-vFDSHmyg9k5hPwsuOD4RMmOJHfei9b1Hgs55zH2xUgw=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-ZvB65TF6Tix6kJ7DpZLqlclEGauA8yT7fm7zhj+YQNM=",
