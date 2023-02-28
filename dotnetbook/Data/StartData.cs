@@ -30,10 +30,10 @@ public static class StartData
                         Name = "Основы",
                         Items = new Item[]
                         {
-                            new Item{ Id = itemId++, Name = "Введение в .NET", Path = "begin.md" },
-                            new Item{ Id = itemId++, Name = "Среда исполнения", Path = "runtime.md" },
-                            new Item{ Id = itemId++, Name = "Консоль", Path = "console.md" },
-                            new Item{ Id = itemId++, Name = "Команды", Path = "commands.md" },
+                            new Item{ Id = itemId++, Name = "Введение в .NET", Path = "originbegin.md" },
+                            new Item{ Id = itemId++, Name = "Среда исполнения", Path = "originruntime.md" },
+                            new Item{ Id = itemId++, Name = "Консоль", Path = "originconsole.md" },
+                            new Item{ Id = itemId++, Name = "Команды", Path = "origincommands.md" },
                         },
                     },
                     new Part
