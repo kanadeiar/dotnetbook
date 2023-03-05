@@ -96,6 +96,7 @@ public abstract class ExceptionArgs
 {
     public virtual string Message => string.Empty;
 }
+//обобщенный класс исключений
 [Serializable]
 public sealed class Exception<TArgs> : Exception, ISerializable where TArgs : ExceptionArgs
 {
