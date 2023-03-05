@@ -39,19 +39,6 @@ public static class StartData
                     new Part
                     { 
                         Id = partId++,
-                        Name = "Механизмы",
-                        Items = new Item[]
-                        {
-                            new Item{ Id = itemId++, Name = "Механизмы CLR", Path = "clrdetails.md" },
-                            new Item{ Id = itemId++, Name = "Исключения", Path = "exceptions.md" },
-                            new Item{ Id = itemId++, Name = "Сборщик мусора", Path = "garbage.md" },
-                            new Item{ Id = itemId++, Name = "Пул потоков", Path = "threadpool.md" },
-                            new Item{ Id = itemId++, Name = "Асинхронный автомат", Path = "mechasync.md" },
-                        },
-                    },
-                    new Part
-                    { 
-                        Id = partId++,
                         Name = "Создание типов",
                         Items = new Item[]
                         {
@@ -109,7 +96,19 @@ public static class StartData
                             new Item{ Id = itemId++, Name = "Асинхронная синхронизация", Path = "syncasync.md" },
                         },
                     },
-
+                    new Part
+                    { 
+                        Id = partId++,
+                        Name = "Механизмы",
+                        Items = new Item[]
+                        {
+                            new Item{ Id = itemId++, Name = "Механизмы CLR", Path = "mechclr.md" },
+                            new Item{ Id = itemId++, Name = "Исключения", Path = "mechexceptions.md" },
+                            new Item{ Id = itemId++, Name = "Сборщик мусора", Path = "mechgarbage.md" },
+                            new Item{ Id = itemId++, Name = "Пул потоков", Path = "mechthreadpool.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронный автомат", Path = "mechasync.md" },
+                        },
+                    },
                 },
             }
         };
