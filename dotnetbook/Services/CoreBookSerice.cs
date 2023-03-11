@@ -1,19 +1,18 @@
 namespace dotnetbook.Services;
 
-public class CoreBookService
+public class CoreBookService : ICoreBookService
 {
     private readonly HttpClient _httpClient;
     private readonly ICollection<Book> _books;
     private readonly ICollection<Item> _items;
     private readonly IDictionary<string, MarkupString> _htmls = new Dictionary<string, MarkupString>(); 
-    public ICollection<Book> Books => _books;
     public CoreBookService(HttpClient httpClient)
     {
         _httpClient = httpClient;
         _books = StartData.GetBooks();
         var items = _books.SelectMany(x => x.Parts).SelectMany(x => x.Items);
         _items = items.ToArray();
-        Task.Run(async () => {
+        ThreadPool.QueueUserWorkItem(async _ => {
             var pipeline = new Markdig.MarkdownPipelineBuilder().UseBootstrap().UseAdvancedExtensions().Build();
             foreach (var item in _items)
             {

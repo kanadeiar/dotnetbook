@@ -1,6 +1,6 @@
 @page "/core"
 @page "/core/{id:int?}"
-@inject CoreBookService CoreBookService
+@inject ICoreBookService Service
 @layout CoreLayout
 
 <PageTitle>@Name - .NET книга</PageTitle>
@@ -96,17 +96,17 @@
     {
         if (Id is { } id)
         {
-            ItemContent = CoreBookService.GetItem(id);
-            AnyNextItem = CoreBookService.GetAnyItem(id + 1);
+            ItemContent = Service.GetItem(id);
+            AnyNextItem = Service.GetAnyItem(id + 1);
             Name = ItemContent?.Name;
             if (ItemContent?.Path is { } path)
             {
-                HtmlContent = await CoreBookService.GetHtml(path);
+                HtmlContent = await Service.GetHtml(path);
             } 
         }
         else
         {
-            var book = CoreBookService.GetBook(bookId);
+            var book = Service.GetBook(bookId);
             Name = book?.Name;
             Parts = book?.Parts ?? Array.Empty<Part>();
         }
