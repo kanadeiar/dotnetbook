@@ -76,10 +76,10 @@ public static class StartData
                         Name = "Код",
                         Items = new Item[]
                         {
-                            new Item{ Id = itemId++, Name = "Ветвления", Path = "ifs.md" },
-                            new Item{ Id = itemId++, Name = "Итерации", Path = "whiles.md" },
-                            new Item{ Id = itemId++, Name = "Стандартные интерфейсы", Path = "stdinterfaces.md" },
-                            new Item{ Id = itemId++, Name = "LINQ", Path = "linq.md" },
+                            new Item{ Id = itemId++, Name = "Ветвления", Path = "codeifs.md" },
+                            new Item{ Id = itemId++, Name = "Итерации", Path = "codewhiles.md" },
+                            new Item{ Id = itemId++, Name = "Стандартные интерфейсы", Path = "codestdinterfaces.md" },
+                            new Item{ Id = itemId++, Name = "LINQ", Path = "codelinq.md" },
                         },
                     },
                     new Part
