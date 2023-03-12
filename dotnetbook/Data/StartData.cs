@@ -88,12 +88,12 @@ public static class StartData
                         Name = "Многопоточность",
                         Items = new Item[]
                         {
-                            new Item{ Id = itemId++, Name = "Потоки", Path = "threads.md" },
-                            new Item{ Id = itemId++, Name = "Асинхронные вычисления", Path = "tasks.md" },
-                            new Item{ Id = itemId++, Name = "Асинхронный код", Path = "asyncawait.md" },
-                            new Item{ Id = itemId++, Name = "Примитивная синхронизация", Path = "syncsimple.md" },
-                            new Item{ Id = itemId++, Name = "Гибридная синхронизация", Path = "synchybrid.md" },
-                            new Item{ Id = itemId++, Name = "Асинхронная синхронизация", Path = "syncasync.md" },
+                            new Item{ Id = itemId++, Name = "Потоки", Path = "threadsorigin.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронные вычисления", Path = "threadstasks.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронный код", Path = "threadsasyncawait.md" },
+                            new Item{ Id = itemId++, Name = "Примитивная синхронизация", Path = "threadssyncsimple.md" },
+                            new Item{ Id = itemId++, Name = "Гибридная синхронизация", Path = "threadssynchybrid.md" },
+                            new Item{ Id = itemId++, Name = "Асинхронная синхронизация", Path = "threadssyncasync.md" },
                         },
                     },
                     new Part
